@@ -2,6 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <style>
+        img {
+
+            object-fit: cover;
+        }
 
         * {
             font-family: 'Nanum Gothic', sans-serif;
@@ -57,24 +61,14 @@
             </td>
 
             <!-- <th><b>. </b></th> -->
-            <td>[[${dto.type}]]</b></td>
+            <td>[[${dto.type2}]]</b></td>
             <td>[[${dto.avg}]]</b></td>
             <td>[[${dto.operatingTime}]]</b></td>
             <td>[[${#temporals.format(dto.regDate, 'yyyy/MM/dd')}]]</td>
         </tr>
         </tbody>
     </table>
-    <ul class="pagination h-100 justify-content-center align-items-center">
-        <li class="page-item" th:if="${result.prev}">
-            <a class="page-link" th:href="@{/resturant/list(page=${result.start - 1})}" tabindex="-1">이전</a>
-        </li>
-        <li th:class=" 'page-item ' + ${result.page == page?'active':''}" th:each="page:${result.pageList}">
-            <a class="page-link" th:href="@{/resturant/list(page=${page})}">[[${page}]]</a>
-        </li>
-        <li class="page-item" th:if="${result.next}">
-            <a class="page-link" th:href="@{/resturant/list(page=${result.end + 1})}">다음</a>
-        </li>
-    </ul>
+
 </div>
 
 <script th:inline="javascript">

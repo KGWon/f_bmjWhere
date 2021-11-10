@@ -25,7 +25,7 @@ public class Resturant extends BaseEntity{
 
     private String phoneNumber;
 
-    private String type;
+    private String type2;
 
     private String operatingTime;
 
@@ -36,7 +36,7 @@ public class Resturant extends BaseEntity{
     }
     public void changeAddress(String address){ this.address = address;}
     public void changePhoneNumber(String phoneNumber){ this.phoneNumber = phoneNumber;}
-    public void changeType(String type){ this.type = type;}
+    public void changeType2(String type2){ this.type2 = type2;}
     public void changeOperatingTime(String operatingTime){ this.operatingTime = operatingTime;}
 
 

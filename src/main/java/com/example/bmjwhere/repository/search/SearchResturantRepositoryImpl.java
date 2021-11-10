@@ -95,7 +95,7 @@ public class SearchResturantRepositoryImpl extends QuerydslRepositorySupport imp
                         break;
                     case "c":
                         // contains(): 함수는 대상 문자열에 특정 문자열이 포함되어 있는지 확인하는 함수
-                        conditionBuilder.or(resturant.type.contains(keyword));
+                        conditionBuilder.or(resturant.type2.contains(keyword));
                         break;
                     case "a":
                         conditionBuilder.or(resturant.address.contains(keyword));

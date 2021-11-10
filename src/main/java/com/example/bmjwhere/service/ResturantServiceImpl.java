@@ -117,7 +117,7 @@ public class ResturantServiceImpl implements ResturantService {
         resturant.changeTitle(resturantDTO.getTitle());
         resturant.changeAddress(resturantDTO.getAddress());
         resturant.changePhoneNumber(resturantDTO.getPhoneNumber());
-        resturant.changeType(resturantDTO.getType());
+        resturant.changeType2(resturantDTO.getType2());
         resturant.changeOperatingTime(resturantDTO.getOperatingTime());
 
         resturantRepository.save(resturant);

@@ -5,6 +5,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
     <style>
+        img {
+
+            object-fit: cover;
+        }
 
         * {
             font-family: 'Nanum Gothic', sans-serif;
@@ -28,7 +32,7 @@
 
         <body>
         <div class="content">
-            <h1 class="mt-4"><br/><br/>맛집 리스트<br/>
+            <h1 class="mt-4"><br/><br/>맛집 리스트
                 <span sec:authorize="hasRole('ADMIN')">
                     <a th:href="@{/resturant/register}">
                         <button type="button" class="btn btn-outline-primary">새로운 맛집 등록</button>
@@ -46,11 +50,11 @@
                     <input type="hidden" name="page" value="1">
                     <div class="input-group-prepend">
                         <select class="custom-select" name="type">
-                            <option th:selected="${pageRequestDTO.type == null}">------</option>
+                            <option th:selected="${pageRequestDTO.type == null}">모든 검색</option>
                             <option value="t" th:selected="${pageRequestDTO.type == 't'}">가게명</option>
                             <option value="r" th:selected="${pageRequestDTO.type == 'r'}">리뷰내용</option>
                             <option value="c" th:selected="${pageRequestDTO.type == 'c'}">맛집 분류</option>
-                            <option value="tr" th:selected="${pageRequestDTO.type == 'ta'}">가게명+주소</option>
+                            <option value="ta" th:selected="${pageRequestDTO.type == 'ta'}">가게명+주소</option>
                         </select>
                     </div>
                     <input class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}">
@@ -76,17 +80,17 @@
                 <tbody>
                 <tr th:each="dto : ${result.dtoList}">
                     <th scope="row">
-                        <a th:href="@{/resturant/read(rno=${dto.rno}, page=${result.page})}">[[${dto.rno}]]</a>
+                        [[${dto.rno}]]
                     </th>
                     <!-- ResturantDTO 안에 있는 imageDTOList의 크기가 0보다 크다면 그리고 경로에 사진이 없지 않다면 -->
                     <!-- 즉, 사진이 있으며 저장 경로에 사진이 존재하다면 <img> 태그 생성 -->
-                    <td><img th:if="${dto.imageDTOList.size() > 0 && dto.imageDTOList[0].path != null}" width="100px"
+                    <td><a th:href="@{/resturant/read(rno=${dto.rno}, page=${result.page})}"><img th:if="${dto.imageDTOList.size() > 0 && dto.imageDTOList[0].path != null}" width="100px"
                              height="100px"
-                             th:src="|/display?fileName=${dto.imageDTOList[0].getThumbnailURL()}|">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                                  th:src="|/display?fileName=${dto.imageDTOList[0].getThumbnailURL()}|"></a>
                     </td>
 
-                    <th><b>[[${dto.title}]]</b></th>
-                    <td>[[${dto.type}]]</b></td>
+                    <th><a th:href="@{/resturant/read(rno=${dto.rno}, page=${result.page})}"><span style="font-size: 20px;"> <b>[[${dto.title}]]</b></span></a></th>
+                    <td>[[${dto.type2}]]</b></td>
                     <td>[[${dto.avg}]]</b></td>
                     <td>[[${dto.operatingTime}]]</b></td>
                     <td>[[${#temporals.format(dto.regDate, 'yyyy/MM/dd')}]]</td>

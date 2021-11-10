@@ -26,7 +26,7 @@ public interface ResturantService {
                 .title(resturant.getTitle())
                 .address(resturant.getAddress())
                 .phoneNumber(resturant.getPhoneNumber())
-                .type((resturant.getType()))
+                .type2((resturant.getType2()))
                 .operatingTime(resturant.getOperatingTime())
                 .regDate(resturant.getRegDate())
                 .modDate(resturant.getModDate())
@@ -56,7 +56,7 @@ public interface ResturantService {
                 .title(resturantDTO.getTitle())
                 .address(resturantDTO.getAddress())
                 .phoneNumber(resturantDTO.getPhoneNumber())
-                .type(resturantDTO.getType())
+                .type2(resturantDTO.getType2())
                 .operatingTime(resturantDTO.getOperatingTime())
                 .build();
         entityMap.put("resturant", resturant);

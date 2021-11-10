@@ -7,6 +7,16 @@
             <meta charset="UTF-8">
 
             <style>
+
+                .header{
+                    margin-top: 60px;
+                }
+
+                .content{
+                    margin-left: 20%;
+                    margin-right: 20%;
+                }
+
                 .uploadResult {
                     width: 100%;
                     background-color: gray;
@@ -31,49 +41,58 @@
                 .uploadResult ul li img {
                     width: 100px;
                 }
+
+                label, input {
+                    font-family: 'Do Hyeon', sans-serif;
+                    font-size: 20px;
+                }
+
             </style>
         </head>
         <body>
-        <h1 class="mt-4">맛집 등록 페이지</h1>
-        <form th:action="@{/resturant/register}" th:method="post">
-            <div class="form-group">
-                <label>제목</label>
-                <input type="text" class="form-control" name="title" placeholder="가게명을 입력하세요.">
-            </div>
-            <div class="form-group">
-                <label>주소</label>
-                <input type="text" class="form-control" name="address" placeholder="주소를 입력하세요.">
-            </div>
-            <div class="form-group">
-                <label>연락처</label>
-                <input type="text" class="form-control" name="phoneNumber" placeholder="연락처를 입력하세요.">
-            </div>
-            <div class="form-group">
-                <label>메뉴 분류</label>
-                <input type="text" class="form-control" name="type" placeholder="메뉴 분류를 입력하세요.">
-            </div>
-            <div class="form-group">
-                <label>운영 시간</label>
-                <input type="text" class="form-control" name="operatingTime" placeholder="운영시간을 입력하세요.">
-            </div>
-            <div class="form-group fileForm">
-                <label>이미지 파일</label>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input files" id="fileInput" multiple>
-                    <label class="custom-file-label" data-browse="Browse"></label>
+        <div class="header">
+            <h1 class="mt-4">맛집 등록 페이지</h1>
+        </div>
+        <div class="content">
+            <form th:action="@{/resturant/register}" th:method="post">
+                <div class="form-group">
+                    <label>제목</label>
+                    <input type="text" class="form-control" name="title" placeholder="가게명을 입력하세요.">
                 </div>
-            </div>
-            <div class="box">
+                <div class="form-group">
+                    <label>주소</label>
+                    <input type="text" class="form-control" name="address" placeholder="주소를 입력하세요.">
+                </div>
+                <div class="form-group">
+                    <label>연락처</label>
+                    <input type="text" class="form-control" name="phoneNumber" placeholder="연락처를 입력하세요.">
+                </div>
+                <div class="form-group">
+                    <label>메뉴 분류</label>
+                    <input type="text" class="form-control" name="type2" placeholder="메뉴 분류를 입력하세요.">
+                </div>
+                <div class="form-group">
+                    <label>운영 시간</label>
+                    <input type="text" class="form-control" name="operatingTime" placeholder="운영시간을 입력하세요.">
+                </div>
+                <div class="form-group fileForm">
+                    <label>이미지 파일</label>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input files" id="fileInput" multiple>
+                        <label class="custom-file-label" data-browse="Browse"></label>
+                    </div>
+                </div>
+                <div class="box">
 
-            </div>
-            <button type="submit" class="btn btn-primary">전송</button>
-            <div class="uploadResult">
-                <ul>
+                </div>
+                <button type="submit" class="btn btn-primary">전송</button>
+                <div class="uploadResult">
+                    <ul>
 
-                </ul>
-            </div>
-        </form>
-
+                    </ul>
+                </div>
+            </form>
+        </div>
         <script>
             $(document).ready(function (e) {
                 var regex = new RegExp("(.*?)\.(exe|sh|zip|alz|tiff)$"); // 정규 표현식을 이용한 파일 확장자 검사

@@ -13,11 +13,21 @@
         </head>
 
         <style>
-            .content {
+            img {
+
+            object-fit: cover;
+
+        }
+
+            img:hover {
+                transform: scale(1.1);
+            }
+
+        .content {
             }
 
             .restaurantName {
-                color: #1b1e21;
+                color: #1e7e34;
                 font-weight: bolder;
                 font-size: 22px;
             }
@@ -26,12 +36,14 @@
                 color: #4e555b;
                 font-size: 15px;
                 margin-left: 10px;
+                font-weight: bold;
             }
 
             .restaurantType {
                 color: #4e555b;
                 font-size: 15px;
                 margin-left: 10px;
+                font-weight: bold;
             }
 
             .foodName {
@@ -53,7 +65,6 @@
                 text-overflow: ellipsis;
             }
 
-
         </style>
 
         <body>
@@ -62,17 +73,17 @@
 
             <h1 class="page-item" style="color: #fd7e14"><br/><br/>
                 카페 베스트 TOP3</h1>
-            <h8>“2021년 부산 카페 투어는 BMW WHERE가 책임질게!”</h8>
+            <h8>“2021년 부산 카페 투어는 BMJ WHERE가 책임질게!”</h8>
             <br>
             <hr>
         </div>
 
         <div class="content" style="text-align:-webkit-center">
-            <div class="card mb-4" style="max-width: 1000px; border : hidden">
+            <div class="card mb-4" style="max-width: 800px; border : hidden">
                 <div class="row g-0">
-                    <div class="col-md-4">
-                        <a href="http://localhost:8081/resturant/read?rno=18&page=1">
-                            <img src="/image/음식점사진/비아조3.jpg" width="280px" height="280px">
+                    <div class="col-md-auto">
+                        <a href="http://localhost:8081/resturant/read?rno=7&page=1">
+                            <img src="/image/음식점사진/1111.png" width="280px" height="280px">
                         </a>
                     </div>
                     <div class="col-md-7">
@@ -91,11 +102,11 @@
                         </div>
                     </div>
                 </div>
+                <hr>
             </div>
-            <hr>
-            <div class="card mb-4" style="max-width: 1000px; border : hidden">
+            <div class="card mb-4" style="max-width: 800px; border : hidden">
                 <div class="row g-0">
-                    <div class="col-md-4">
+                    <div class="col-md-auto">
                         <a href="http://localhost:8081/resturant/read?rno=19&page=1">
                             <img src="/image/음식점사진/사이먼커피2.jpg" width="280px" height="280px">
                         </a>
@@ -115,11 +126,12 @@
                         </div>
                     </div>
                 </div>
+                <hr>
             </div>
-            <hr>
-            <div class="card mb-4" style="max-width: 1000px; border : hidden">
+
+            <div class="card mb-4" style="max-width: 800px; border : hidden">
                 <div class="row g-0">
-                    <div class="col-md-4">
+                    <div class="col-md-auto">
                         <a href="http://localhost:8081/resturant/read?rno=20&page=1">
                             <img src="/image/음식점사진/신기산업1.jpg" width="280px" height="280px">
                         </a>
@@ -140,8 +152,9 @@
                         </div>
                     </div>
                 </div>
+                <hr>
             </div>
-            <hr>
+
         </div>
 
         </body>
@@ -153,4 +166,13 @@
         <br/> <br/>
     </th:block>
 </th:block>
+<br><br><br><br>
+<div class="footer">
+    <div class="container">
+        <footer class="d-flex flex-wrap justify-content-center align-items-center py-2 my-0 border-top">
+            <small>업체명 : @BMJ WHERE? 주소 : 부산광역시 수영구 광남로 70 사업자등록번호 : 221-10-150219 고객센터: 1588-1588</small>
+            <small>@BMJ WHERE의 모든 상품 이미지 및 컨텐츠의 저작권은 BMJ WHERE에 있으며, 무단 사용시 법적제재를 받을 수 있습니다.</small>
+        </footer>
+    </div>
+</div>
 </html>

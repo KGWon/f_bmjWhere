@@ -5,6 +5,7 @@
     <!-- 카카오맵 api 라이브러리 호출 -->
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <style>
+
         .uploadResult {
             object-fit: cover;
             width: 100%;
@@ -100,7 +101,16 @@
         .content {
             display: table;
             margin-left: auto;
-            margin-right: auto;
+            margin-right: auto
+        }
+
+        h1{
+            color: #1e7e34;
+        }
+
+        label, input{
+            font-family: 'Do Hyeon', sans-serif;
+            font-size: 20px;
         }
 
     </style>
@@ -121,7 +131,7 @@
 
             <div class="row">
                 <div class="col-md-12"><input id="RestaurantTitle" type="text" class="form-control" name="title"
-                                              th:value="${dto.title}" readonly></div>
+                                              th:value="${dto.title}" readonly style="font-family: 'Do Hyeon', sans-serif"></div>
                 <!--      <div class="col-md-8"><input id="RestaurantTitle2" type="text" class="form-control" name="title" th:value="${dto.avg}"  readonly></div>-->
             </div>
             <br/>
@@ -145,18 +155,18 @@
                     </div>
                     <div class="form-group">
                         <label>메뉴 분류</label>
-                        <input type="text" class="form-control" name="type" th:value="${dto.type}" readonly>
+                        <input type="text" class="form-control" name="type2" th:value="${dto.type2}" readonly>
                     </div>
                     <div class="form-group">
                         <label>운영시간</label>
                         <input type="text" class="form-control" name="operatingTime"
                                th:value="${dto.operatingTime}" readonly>
                     </div>
-                    <div class="form-group">
+               <!--     <div class="form-group">
                         <label>리뷰 개수</label>
                         <input type="text" class="form-control" name="reviewCnt" th:value="${dto.reviewCnt}"
                                readonly>
-                    </div>
+                    </div>-->
                     <div class="form-group">
                         <label>평균</label>
                         <input type="text" class="form-control" name="avg" th:value="${dto.avg}" readonly>
@@ -174,7 +184,7 @@
                     <div id="map" style="width:550px;height:550px; vertical-align: bottom">
 
                     </div>
-                </div>
+                </div><br><br>
                 <div id="bform2" style="flex: auto">
                 <span sec:authorize="hasRole('ADMIN')">
                 <a th:href="@{/resturant/modify(rno=${dto.rno}, page=${requestDTO.page}, type=${requestDTO.type}, keyword=${requestDTO.keyword})}">
@@ -188,11 +198,11 @@
                     <button type="button" class="btn btn-primary">리뷰 개수: <span class="badge badge-light">[[${dto.reviewCnt}]]</span>
                     </button>
                     <button type="button" class="btn btn-info addReviewBtn">리뷰 등록</button>
-                    <div class="list-group reviewList">
+                   <br> <br> <div class="list-group reviewList">
                     </div>
 
                 </div>
-                <br/><br/>
+
             </div>
             <!-- 리뷰 모달 -->
             <div class="reviewModal modal" tabindex="-1" role="dialog">
@@ -201,15 +211,16 @@
                         <div class="modal-header">
                             <h5 class="modal-title">맛집 리뷰</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+                         <!--       <span aria-hidden="true">&times;</span>-->
                             </button>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
                                 <!-- <input type="hidden" name="author" class="form-control" id="inputAuthor" th:value="${author}">-->
-                                <label>작성자(닉네임) / 회원이메일입력</label>
+                                <label>회원이메일입력</label>
+                                <input type="text" class="form-control"  th:value="${author}">
                                 <!-- <input type="text" class="form-control" name="email" th:value="${writer}" readonly>-->
-                                <input type="text" class="form-control" name="email">
+                                <input type="hidden" class="form-control" name="email">
                             </div>
                             <div class="form-group">
                                 <label>평점<span class="grade"></span></label>
@@ -220,10 +231,10 @@
                                 <input type="text" class="form-control" name="text" placeholder="리뷰평을 작성하시오.">
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                        <div class="modal-footer"> <!--class="btn btn-secondary"  data-dismiss="modal"-->
+                            <button type="button" class="btn btn-primary closeBtn" >닫기</button>
                             <button type="button" class="btn btn-primary reviewSaveBtn">저장</button>
-                            <!--   <button type="button" class="btn btn-warning modifyBtn">수정</button> -->
+                           <button type="button" class="btn btn-warning modifyBtn">수정</button>
                             <button type="button" class="btn btn-danger removeBtn">삭제</button>
                         </div>
                     </div>
@@ -243,7 +254,9 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                        <!--  <a href="#">
+                    &times; data-dismiss="modal"</a>-->
+                      <button type="button" class="btn btn-primary closeBtn" >닫기</button>
                     </div>
                 </div>
             </div>
@@ -294,7 +307,7 @@
             });
         </script>
 
-        <script>
+        <script th:inline="javascript">
             $(document).ready(function (e) {
                 var grade = 0;
                 var rno = [[${dto.rno}]];
@@ -315,8 +328,10 @@
                 var inputText = $('input[name="text"]');
 
 
+                let name = [[ ${author} ]];
+
                 $(".addReviewBtn").click(function () {
-                    inputMid.val("");
+                    inputMid.val(name);
                     inputText.val("");
 
                     $(".removeBtn, .modifyBtn").hide();
@@ -368,7 +383,7 @@
                             console.log(review);
 
                             str += ' <div class="card-body" data-reviewnum=' + review.reviewnum + ' data-mid=' + review.email + '>';
-                            str += ' <h5 class="card-title">' + review.text + ' <span  style="background-color: lightgreen">' + review.grade + '</span></h5>';
+                            str += ' <h5 class="card-title">' + review.text + ' <span  style="font-size:16px; background-color: #D9E5FF">' + review.grade + '</span></h5>';
                             str += ' <h6 class="card-subtitle mb-2 text-muted">' + review.name + '</h6>';
                             str += ' <p class="card-text">' + formatTime(review.regDate) + '</p>';
                             str += ' </div>';
@@ -448,10 +463,28 @@
                     $(".imageModal").modal('show');
                 })
             });
+
+
+
+            $(".closeBtn").click(function () {
+
+                $(".modal").modal('hide');
+
+            });
+
         </script>
 
 
         </body>
     </th:block>
 </th:block>
+<br><br><br><br>
+<div class="footer">
+    <div class="container">
+        <footer class="d-flex flex-wrap justify-content-center align-items-center py-2 my-0 border-top">
+            <small>업체명 : @BMJ WHERE? 주소 : 부산광역시 수영구 광남로 70 사업자등록번호 : 221-10-150219 고객센터: 1588-1588</small>
+            <small>@BMJ WHERE의 모든 상품 이미지 및 컨텐츠의 저작권은 BMJ WHERE에 있으며, 무단 사용시 법적제재를 받을 수 있습니다.</small>
+        </footer>
+    </div>
+</div>
 </html>

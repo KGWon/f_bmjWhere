@@ -20,16 +20,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-            integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-            crossorigin="anonymous"></script>
+    <!--    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"-->
+    <!--            integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"-->
+    <!--            crossorigin="anonymous"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
             integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
             crossorigin="anonymous"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap" rel="stylesheet">
-    <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"-->
-    <!--          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
@@ -38,7 +38,7 @@
         * {
             margin: 0;
             padding: 0;
-            font-family: 'Nanum Gothic', sans-serif;
+            /*font-family: fantasy;*/
         }
 
         img {
@@ -111,20 +111,27 @@
             height: 50px;
             background-color: orange;
             color: white;
+            border-color: orange;
+            border-radius: 10px;
 
         }
 
         h3 {
             color: darkorange;
+            font-weight: bold;
+
         }
 
         h4 {
-            font-size: 18px;
+            font-size: 17px;
+            color: #6610f2;
+            font-weight: bold;
         }
 
         p {
             font-size: 15px;
-            color: #4e555b;
+            color: #1c7430;
+            font-weight: bold;
         }
 
         p1 {
@@ -138,7 +145,7 @@
 <body>
 
 <div class="header">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #343a40">
         <a class="navbar-brand" href="/">
             <img src="/image/logo2.png">
         </a>
@@ -209,15 +216,16 @@
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="image/content/고화질사진1.jpg" class="d-block w-100" height="600" alt="...">
+                <img src="image/content/고화질사진1.jpg" class="d-block w-100" alt="..." height="500px">
             </div>
             <div class="carousel-item">
-                <img src="image/content/고화질사진2.jpg" class="d-block w-100" height="600" alt="...">
+                <img src="image/content/고화질사진2.jpg" class="d-block w-100" alt="..." height="500px">
             </div>
             <div class="carousel-item">
-                <img src="image/content/고화질사진4.jpg" class="d-block w-100" height="600" alt="...">
+                <img src="image/content/고화질사진4.jpg" class="d-block w-100" alt="..." height="500px">
             </div>
         </div>
+
     </div>
     <div class="jb-text">
         <form action="/resturant/list" method="get" id="searchForm">
@@ -249,17 +257,17 @@
                 </a>
             </a>
             <div class="card-body">
-                <h4 class="card-title">사이먼커피</h4>
+                <h4 class="card-title">[사이먼커피]</h4>
                 <p class="card-text">부산 연제구 - 카페</p>
             </div>
         </div>
         <div class="card">
-            <a href="http://localhost:8081/resturant/read?rno=38&page=1">
+            <a href="http://localhost:8081/resturant/read?rno=19&page=1">
                 <img src="image/음식점사진/톤쇼우1.jpg"
                      class="card-img-top" alt="..." width="450px" height="300px">
             </a>
             <div class="card-body">
-                <h4 class="card-title">톤쇼우</h4>
+                <h4 class="card-title">[톤쇼우]</h4>
                 <p class="card-text">부산 수영구 - 돈가스</p>
             </div>
         </div>
@@ -269,7 +277,7 @@
                      class="card-img-top" alt="..." width="450px" height="300px">
             </a>
             <div class="card-body">
-                <h4 class="card-title">태종대 욜로조개구이</h4>
+                <h4 class="card-title">[태종대 욜로조개구이]</h4>
                 <p class="card-text">부산 영도구 - 조개구이</p>
             </div>
         </div>
@@ -284,7 +292,7 @@
                 <img src="image/음식점사진/해운대암소갈비집3.jpg" class="card-img-top" alt="..." width="450px" height="300px">
             </a>
             <div class="card-body">
-                <h4 class="card-title">해운대 암소갈비집</h4>
+                <h4 class="card-title">[해운대 암소갈비집]</h4>
                 <p class="card-text">부산 해운대구 - 육류</p>
             </div>
         </div>
@@ -294,7 +302,7 @@
                      class="card-img-top" alt="..." width="450px" height="300px">
             </a>
             <div class="card-body">
-                <h4 class="card-title">솔내음한정식</h4>
+                <h4 class="card-title">[솔내음한정식]</h4>
                 <p class="card-text">부산 해운대구 - 한정식</p>
             </div>
         </div>
@@ -304,7 +312,7 @@
                      class="card-img-top" alt="..." width="450px" height="300px">
             </a>
             <div class="card-body">
-                <h4 class="card-title">스케줄해운대</h4>
+                <h4 class="card-title">[스케줄해운대]</h4>
                 <p class="card-text">부산 해운대구 - 양식</p>
             </div>
         </div>
@@ -314,11 +322,11 @@
     <h3>광안리 주변 맛집 리스트</h3>
     <div class="card-deck">
         <div class="card">
-            <a href="http://localhost:8081/resturant/read?rno=38&page=1">
+            <a href="http://localhost:8081/resturant/read?rno=19&page=1">
                 <img src="image/음식점사진/톤쇼우1.jpg" class="card-img-top" alt="..." width="450px" height="300px">
             </a>
             <div class="card-body">
-                <h4 class="card-title">톤쇼우</h4>
+                <h4 class="card-title">[톤쇼우]</h4>
                 <p class="card-text">부산 수영구 - 돈가스</p>
             </div>
         </div>
@@ -328,7 +336,7 @@
                      class="card-img-top" alt="..." width="450px" height="300px">
             </a>
             <div class="card-body">
-                <h4 class="card-title">문버거</h4>
+                <h4 class="card-title">[문버거]</h4>
                 <p class="card-text">부산 수영구 - 브런치</p>
             </div>
         </div>
@@ -338,7 +346,7 @@
                      class="card-img-top" alt="..." width="450px" height="300px">
             </a>
             <div class="card-body">
-                <h4 class="card-title">매드독스</h4>
+                <h4 class="card-title">[매드독스]</h4>
                 <p class="card-text">부산 수영구 - 피자</p>
             </div>
         </div>
@@ -352,7 +360,7 @@
                 <img src="image/음식점사진/이슈모리1.jpg" class="card-img-top" alt="..." width="450px" height="300px">
             </a>
             <div class="card-body">
-                <h4 class="card-title">이슈모리</h4>
+                <h4 class="card-title">[이슈모리]</h4>
                 <p class="card-text">부산 진구 - 초밥, 롤</p>
             </div>
         </div>
@@ -362,7 +370,7 @@
                      class="card-img-top" alt="..." width="450px" height="300px">
             </a>
             <div class="card-body">
-                <h4 class="card-title">라푀유크로와상</h4>
+                <h4 class="card-title">[라푀유크로와상]</h4>
                 <p class="card-text">부산 진구 - 베이커리</p>
             </div>
         </div>
@@ -372,7 +380,7 @@
                      class="card-img-top" alt="..." width="450px" height="300px">
             </a>
             <div class="card-body">
-                <h4 class="card-title">몫몫</h4>
+                <h4 class="card-title">[몫몫]</h4>
                 <p class="card-text">부산 진구 - 일식당</p>
             </div>
         </div>
@@ -386,7 +394,7 @@
                 <img src="image/음식점사진/우사기1.jpg" class="card-img-top" alt="..." width="450px" height="300px">
             </a>
             <div class="card-body">
-                <h4 class="card-title">우사기</h4>
+                <h4 class="card-title">[우사기]</h4>
                 <p class="card-text">부산 중구 - 일식당</p>
             </div>
         </div>
@@ -396,7 +404,7 @@
                      class="card-img-top" alt="..." width="450px" height="300px">
             </a>
             <div class="card-body">
-                <h4 class="card-title">깡돼후</h4>
+                <h4 class="card-title">[깡돼후]</h4>
                 <p class="card-text">부산 중구 - 육류</p>
             </div>
         </div>
@@ -406,13 +414,13 @@
                      class="card-img-top" alt="..." width="450px" height="300px">
             </a>
             <div class="card-body">
-                <h4 class="card-title">공순대</h4>
+                <h4 class="card-title">[공순대]</h4>
                 <p class="card-text">부산 중구 - 이북음식</p>
             </div>
         </div>
     </div>
 </div>
-<br>
+<br><br>
 
 <div class="footer">
     <div class="container">

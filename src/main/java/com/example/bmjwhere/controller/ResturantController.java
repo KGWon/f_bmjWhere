@@ -4,6 +4,7 @@ import com.example.bmjwhere.dto.ClubMemberDTO;
 import com.example.bmjwhere.dto.PageRequestDTO;
 import com.example.bmjwhere.dto.ResturantDTO;
 import com.example.bmjwhere.repository.ClubMemberRepository;
+import com.example.bmjwhere.security.dto.ClubAuthMemberDTO;
 import com.example.bmjwhere.service.ClubMemberService;
 import com.example.bmjwhere.service.ReplyService;
 import com.example.bmjwhere.service.ResturantService;
@@ -63,8 +64,29 @@ public class ResturantController {
         model.addAttribute("result", resturantService.getList(pageRequestDTO));
     }
 
-    @GetMapping({"/read", "/modify"})
+ /*   @GetMapping({"/read", "/modify"})
     public void read(long rno, @ModelAttribute("requestDTO") PageRequestDTO requestDTO, Model model) {
+        log.info("rno: " + rno);
+        ResturantDTO resturantDTO = resturantService.getResturant(rno);
+        model.addAttribute("dto", resturantDTO);
+
+
+
+    }*/
+
+    @GetMapping({"/read"})
+    public String read(long rno, @ModelAttribute("requestDTO") PageRequestDTO requestDTO,
+                       @AuthenticationPrincipal UserDetails user, Model model) {
+        log.info("rno: " + rno);
+        ResturantDTO resturantDTO = resturantService.getResturant(rno);
+        model.addAttribute("dto", resturantDTO);
+        model.addAttribute("author",user.getUsername());
+        return "/resturant/read";
+    }
+
+    @GetMapping({"/modify"})
+    public void modify(long rno, @ModelAttribute("requestDTO") PageRequestDTO requestDTO,
+                       Model model) {
         log.info("rno: " + rno);
         ResturantDTO resturantDTO = resturantService.getResturant(rno);
         model.addAttribute("dto", resturantDTO);
@@ -95,7 +117,7 @@ public class ResturantController {
 
     }
 
-    @PostMapping("/remove") // 영화 삭제 기능
+    @PostMapping("/remove")
     public String remove(long rno, RedirectAttributes redirectAttributes) {
         log.info("rno: " + rno);
         resturantService.removeWithReplise(rno);
@@ -103,7 +125,7 @@ public class ResturantController {
         return "redirect:/resturant/list";
     }
 
-    @PostMapping("/modify") // 영화 수정 기능
+    @PostMapping("/modify")
     public String modify(ResturantDTO dto, @ModelAttribute("requestDTO") PageRequestDTO requestDTO, RedirectAttributes redirectAttributes) {
         log.info("post modify..................");
         log.info("dto: " + dto);
@@ -124,6 +146,12 @@ public class ResturantController {
 
     }
 
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    @GetMapping("/eatDeal2")
+    public void eatDeal2() {
+
+    }
+
     @GetMapping({"/categoryHansik", "/categoryIlsik", "/categoryJongsik", "/categoryYangsik", "/categoryCafe"})
     public void categoryIlsik(PageRequestDTO pageRequestDTO, Model model) {
         log.info("get categoryilsik......");
@@ -135,6 +163,11 @@ public class ResturantController {
 
     }
 
+
+    @GetMapping("/cess2")
+    public void cess2() {
+//        log.info("register..........");
+    }
 
     @PreAuthorize("hasRole('USER')")
     @GetMapping("/memberMypage")
@@ -152,9 +185,14 @@ public class ResturantController {
 
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/memberOnly")
-    public void memberOnly() {
-//        log.info("register..........");
+    public void memberOnly(@AuthenticationPrincipal ClubAuthMemberDTO memberDTO, Model model){
+
+        log.info("Sample....");
+        log.info(memberDTO);
+
+        model.addAttribute("member", memberDTO.getName());
     }
+
 
 
     @GetMapping("/register2")
@@ -166,15 +204,12 @@ public class ResturantController {
     public String register2(ClubMemberDTO clubMemberDTO, RedirectAttributes redirectAttributes) {
         log.info("clubmemberDTO: " + clubMemberDTO);
 
-        // 영화 객체와 영화 이미지 List<> 객체를 DB에 저장 후 영화 번호만 가져옴
         String email = ClubMemberService.register2(clubMemberDTO);
 //
         // addAttribute로 전달한 값은 url뒤에 붙으며, 리프레시(새로고침)해도 데이터가 유지
         // addFlashAttribute로 전달한 값은 url뒤에 붙지 않는다. 일회성이라 리프레시할 경우 데이터가 소멸한다.
         // 또한 2개이상 쓸 경우, 데이터는 소멸한다. 따라서 맵을 이용하여 한번에 값을 전달해야한다.
         redirectAttributes.addFlashAttribute("msg2", email);
-
-        // 영화와 영화 이미지들을 DB에 등록 후 목록 페이지로 이동
 
         return "redirect:/resturant/joininSuccess";
 
@@ -184,7 +219,7 @@ public class ResturantController {
     @GetMapping("/logout")
     public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
         new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
-        return "redirect:/resturant/list";
+        return "redirect:/index.html";
     }
 
 
@@ -199,23 +234,6 @@ public class ResturantController {
 
     }
 
-
- /*   @GetMapping("/test")
-    public String post(Model model, Authentication authentication) {
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        model.addAttribute("author",userDetails.getUsername());
-        return "/resturant/test";
-    }
-    @GetMapping("/")
-   public String username(Principal principal) {
-       System.out.println(principal.getName());
-       return "/";
-/*
-    @GetMapping("/read")
-    public String dashboard2(Model model, Principal principal){ // principal 객체를 받아서 로그인된 사용자의 정보를 알 수 있다.
-        ReplyService.dashboard; // 서비스에 principal 정보를 넘겨주지 않더라도 해당 서비스 안에서 Authentication 정보를 활용가능 (ThreadLocal 방식이기 때문에 가능)
-        model.addAttribute("message", principal.getName() ); // Key Value 형태로 모델에 String 객체를 넣어줌
-        return "dashboard";*/
 
 
 }

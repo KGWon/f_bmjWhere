@@ -4,7 +4,7 @@
     <th:block th:fragment="content">
         <body>
 
-        <div class="content">
+        <div class="content"><br><br><br>
             <h1 class="mt-4">맛집 정보 수정</h1>
             <form action="/movie/modify" method="post">
                 <!-- 페이지 번호 -->
@@ -29,7 +29,7 @@
                 </div>
                 <div class="form-group">
                     <label>메뉴 분류</label>
-                    <input type="text" class="form-control" name="type" th:value="${dto.type}">
+                    <input type="text" class="form-control" name="type2" th:value="${dto.type2}">
                 </div>
                 <div class="form-group">
                     <label>운영 시간</label>
@@ -43,11 +43,11 @@
                     <label>평균</label>
                     <input type="text" class="form-control" name="avg" th:value="${dto.avg}" readonly>
                 </div>
-            </form>
-            <button type="button" class="btn btn-primary modifyBtn">수정</button>
-            <button type="button" class="btn btn-info listBtn">목록</button>
-            <button type="button" class="btn btn-danger removeBtn">삭제</button>
-
+            </form><br><br>
+            <button type="button" class="btn btn-primary modifyBtn" style="font-family:Noto Sans KR">수정</button>
+            <button type="button" class="btn btn-info listBtn"  style="font-family:Noto Sans KR">목록</button>
+            <button type="button" class="btn btn-danger removeBtn"  style="font-family:Noto Sans KR">삭제</button>
+<br><br><br>
             <script th:inline="javascript">
                 var actionForm = $("form"); //form 태그 객체
 

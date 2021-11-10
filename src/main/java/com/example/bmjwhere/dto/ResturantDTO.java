@@ -23,7 +23,7 @@ public class ResturantDTO {
 
     private String phoneNumber;
 
-    private String type;
+    private String type2;
 
     private String operatingTime;
 

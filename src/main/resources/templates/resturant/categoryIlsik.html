@@ -15,9 +15,16 @@
         <style>
             .content {
             }
+            img {
 
+                object-fit: cover;
+
+            }
+            img:hover {
+                transform: scale(1.1);
+            }
             .restaurantName {
-                color: #1b1e21;
+                color: #1e7e34;
                 font-weight: bolder;
                 font-size: 22px;
             }
@@ -26,12 +33,14 @@
                 color: #4e555b;
                 font-size: 15px;
                 margin-left: 10px;
+                font-weight: bold;
             }
 
             .restaurantType {
                 color: #4e555b;
                 font-size: 15px;
                 margin-left: 10px;
+                font-weight: bold;
             }
 
             .foodName {
@@ -53,7 +62,6 @@
                 text-overflow: ellipsis;
             }
 
-
         </style>
 
         <body>
@@ -68,11 +76,11 @@
         </div>
 
         <div class="content" style="text-align:-webkit-center">
-            <div class="card mb-4" style="max-width: 1000px; border : hidden">
+            <div class="card mb-4" style="max-width: 800px; border : hidden">
                 <div class="row g-0">
-                    <div class="col-md-4">
+                    <div class="col-md-auto">
                         <a href="http://localhost:8081/resturant/read?rno=10&page=1">
-                            <img src="/image/음식점사진/송원일식3.jpg" width="280px" height="280px">
+                            <img src="/image/음식점사진/444.jpg" width="280px" height="280px">
                         </a>
                     </div>
                     <div class="col-md-7">
@@ -89,11 +97,12 @@
                         </div>
                     </div>
                 </div>
+                <hr>
             </div>
-            <hr>
-            <div class="card mb-4" style="max-width: 1000px; border : hidden">
+
+            <div class="card mb-4" style="max-width: 800px; border : hidden">
                 <div class="row g-0">
-                    <div class="col-md-4">
+                    <div class="col-md-auto">
                         <a href="http://localhost:8081/resturant/read?rno=7&page=1">
                             <img src="/image/음식점사진/몫몫3.jpg" width="280px" height="280px">
                         </a>
@@ -113,12 +122,13 @@
                         </div>
                     </div>
                 </div>
+                <hr>
             </div>
-            <hr>
-            <div class="card mb-4" style="max-width: 1000px; border : hidden">
+
+            <div class="card mb-4" style="max-width: 800px; border : hidden">
                 <div class="row g-0">
-                    <div class="col-md-4">
-                        <a href="http://localhost:8081/resturant/read?rno=8&page=1">
+                    <div class="col-md-auto">
+                        <a href="http://localhost:8081/resturant/read?rno=12&page=1">
                             <img src="/image/음식점사진/이슈모리2.jpg" width="280px" height="280px">
                         </a>
                     </div>
@@ -136,10 +146,8 @@
                         </div>
                     </div>
                 </div>
+                <hr>
             </div>
-            <hr>
-
-
         </div>
 
         </body>

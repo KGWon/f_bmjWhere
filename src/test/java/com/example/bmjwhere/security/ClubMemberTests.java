@@ -21,8 +21,8 @@ public class ClubMemberTests {
     @Test
     public void insertAdminMember() {
         ClubMember clubMember = ClubMember.builder()
-                .email("kkk1234@naver.com")
-                .name("admin1")
+                .email("admin@bmj.com")
+                .name("나는관리자")
                 .fromSocial(false)
                 .password(passwordEncoder.encode("1111"))
                 .build();
@@ -35,8 +35,8 @@ public class ClubMemberTests {
     @Test
     public void insertUserMember() {
         ClubMember clubMember = ClubMember.builder()
-                .email("k@naver.com")
-                .name("user1")
+                .email("where2@bmj.com")
+                .name("먹방여인")
                 .fromSocial(false)
                 .password(passwordEncoder.encode("1111"))
                 .build();
