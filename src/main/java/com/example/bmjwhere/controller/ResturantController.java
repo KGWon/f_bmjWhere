@@ -144,9 +144,14 @@ public class ResturantController {
 
     @PreAuthorize("hasRole('USER')")
     @GetMapping("/memberMypage")
-    public void memberMypage() {
+    public void memberMypage(@AuthenticationPrincipal ClubAuthMemberDTO memberDTO, Model model){
 
+        log.info("Sample....");
+        log.info(memberDTO);
+
+        model.addAttribute("member", memberDTO.getName());
     }
+
 
 
     @PreAuthorize("hasRole('ADMIN')")
