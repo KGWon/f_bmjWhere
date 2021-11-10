@@ -17,7 +17,7 @@ public interface ResturantService {
     ResturantDTO getResturant(Long rno);
     PageResultDTO<ResturantDTO, Object[]> getList(PageRequestDTO requestDTO);
     PageResultDTO<ResturantDTO, Object[]> getJList(PageRequestDTO requestDTO);
-    void removeWithReplise(Long mno); // 영화 및 리뷰 삭제
+    void removeWithReplise(Long mno);  
     void modify(ResturantDTO resturantDTO);
 
     default ResturantDTO entitiesToDTO(Resturant resturant, List<ResturantImage> resturantImages, Double avg, Long reviewCnt){
