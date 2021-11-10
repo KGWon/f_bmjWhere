@@ -63,17 +63,8 @@ public class ResturantController {
         log.info("pageRequestDTO: " + pageRequestDTO);
         model.addAttribute("result", resturantService.getList(pageRequestDTO));
     }
-
- /*   @GetMapping({"/read", "/modify"})
-    public void read(long rno, @ModelAttribute("requestDTO") PageRequestDTO requestDTO, Model model) {
-        log.info("rno: " + rno);
-        ResturantDTO resturantDTO = resturantService.getResturant(rno);
-        model.addAttribute("dto", resturantDTO);
-
-
-
-    }*/
-
+ 
+   @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping({"/read"})
     public String read(long rno, @ModelAttribute("requestDTO") PageRequestDTO requestDTO,
                        @AuthenticationPrincipal UserDetails user, Model model) {
@@ -92,25 +83,7 @@ public class ResturantController {
         model.addAttribute("dto", resturantDTO);
     }
 
-/*
-    @GetMapping({"/read"})
-    public String read(long rno, @ModelAttribute("requestDTO") PageRequestDTO requestDTO, @AuthenticationPrincipal UserDetails user, Model model) {
-        log.info("rno: " + rno);
-        ResturantDTO resturantDTO = resturantService.getResturant(rno);
-        model.addAttribute("dto", resturantDTO);
-        model.addAttribute("writer",user.getUsername());
-
-        return "/resturant/read";
-    }
-
-    @GetMapping({"/modify"})
-    public void modify(long rno, @ModelAttribute("requestDTO") PageRequestDTO requestDTO, Model model) {
-        log.info("rno: " + rno);
-        ResturantDTO resturantDTO = resturantService.getResturant(rno);
-        model.addAttribute("dto", resturantDTO);
-    }
-
-*/
+ 
 
     @GetMapping("/login")
     public void login(){
@@ -178,8 +151,7 @@ public class ResturantController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/adminOnly")
-    public void adminOnly() {
-//        log.info("register..........");
+    public void adminOnly() { 
     }
 
 
@@ -205,7 +177,7 @@ public class ResturantController {
         log.info("clubmemberDTO: " + clubMemberDTO);
 
         String email = ClubMemberService.register2(clubMemberDTO);
-//
+ 
         // addAttribute로 전달한 값은 url뒤에 붙으며, 리프레시(새로고침)해도 데이터가 유지
         // addFlashAttribute로 전달한 값은 url뒤에 붙지 않는다. 일회성이라 리프레시할 경우 데이터가 소멸한다.
         // 또한 2개이상 쓸 경우, 데이터는 소멸한다. 따라서 맵을 이용하여 한번에 값을 전달해야한다.
