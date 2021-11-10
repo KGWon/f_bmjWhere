@@ -19,8 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @Log4j2
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true) // 어노테이션 기반의 접근 제한을 설정할 수 있도록 하는 설정
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    //이버전은 로그인기능구현버전
+public class SecurityConfig extends WebSecurityConfigurerAdapter { 
     @Autowired
     private ClubUserDetailsService userDetailsService;
 
